@@ -12,9 +12,11 @@ public interface EstudanteService {
     
 
     public void salvarEstudante(Estudante estudante);
-    public void deletarEstudante(Estudante estudante);
+    public void deletarEstudante(Integer id);
     public Estudante getEstudanteById(Integer id);
     public List<Estudante> getListaEstudante();
+    public List<Estudante> getEstudantesByCurso(String curso);
+    public List<Estudante> getEstudantesByLinguagem(String linguagem);
 
 
 

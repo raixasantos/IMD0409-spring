@@ -35,10 +35,22 @@
             <td th:text="${estudante.primeiroNome}"></td>
             <td th:text="${estudante.curso}"></td>
             <td th:text="${estudante.linguagem}"></td>
+            <td>
+              <form th:action="@{/estudante/getEstudante}">
+                <button type="submit" th:name="id" th:value="${estudante.id}"> Detalhes </button>
+              </form>
+            </td>
+            <td>
+              <form th:action="@{/estudante/deleteEstudante}">
+                <button type="submit" th:name="id" th:value="${estudante.id}"> Apagar </button>
+              </form>
+            </td>
           </tr>
         </tbody>
       </table>
     <br><br>
+    <a href="getEstudantesByCurso">Estudantes por curso</a><br>
+    <a href="getEstudantesByLinguagem">Estudantes por linguagem</a><br>
     <a href="showForm">Formulário de estudantes</a><br>
 
 </body>

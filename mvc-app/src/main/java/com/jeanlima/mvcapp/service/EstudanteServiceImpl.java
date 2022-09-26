@@ -16,6 +16,7 @@ public class EstudanteServiceImpl implements EstudanteService{
     public void salvarEstudante(Estudante estudante) {
         System.out.println(estudante.toString());
         try{
+            estudante.setId(estudantes.size());
             this.estudantes.add(estudante);
         } catch(Exception e){
             e.printStackTrace();
@@ -26,10 +27,14 @@ public class EstudanteServiceImpl implements EstudanteService{
     }
 
     @Override
-    public void deletarEstudante(Estudante estudante) {
-        
-        this.estudantes.remove(estudante);
-        
+    public void deletarEstudante(Integer id) { 
+        Estudante estudanteRequisitado = new Estudante();
+        for (Estudante estudante : estudantes) {
+            if(estudante.getId() == id){
+                estudanteRequisitado = estudante; 
+            }
+        }    
+        this.estudantes.remove(estudanteRequisitado); 
     }
 
     @Override
@@ -46,6 +51,26 @@ public class EstudanteServiceImpl implements EstudanteService{
     public List<Estudante> getListaEstudante() {
         return this.estudantes;
     }
-
     
+    @Override
+    public List<Estudante> getEstudantesByCurso(String curso) {
+        List<Estudante> estudantesPorCurso = new ArrayList<Estudante>();
+        for (Estudante estudante : estudantes) {
+            if(estudante.getCurso() == curso){
+                estudantesPorCurso.add(estudante);
+            }
+        }
+        return estudantesPorCurso;
+    }
+    
+    @Override
+    public List<Estudante> getEstudantesByLinguagem(String linguagem) {
+        List<Estudante> estudantesPorLinguagem = new ArrayList<Estudante>();
+        for (Estudante estudante : estudantes) {
+            if(estudante.getLinguagem() == linguagem){
+                estudantesPorLinguagem.add(estudante);
+            }
+        }
+        return estudantesPorLinguagem;
+    }
 }
