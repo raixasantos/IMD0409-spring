@@ -22,10 +22,10 @@ import org.springframework.web.server.ResponseStatusException;
 import com.jeanlima.springrestapi.enums.StatusPedido;
 import com.jeanlima.springrestapi.model.ItemPedido;
 import com.jeanlima.springrestapi.model.Pedido;
-import com.jeanlima.springrestapi.rest.dto.AtualizacaoStatusPedidoDTO;
-import com.jeanlima.springrestapi.rest.dto.InformacaoItemPedidoDTO;
-import com.jeanlima.springrestapi.rest.dto.InformacoesPedidoDTO;
-import com.jeanlima.springrestapi.rest.dto.PedidoDTO;
+import com.jeanlima.springrestapi.rest.dto.Pedido.AtualizacaoStatusPedidoDTO;
+import com.jeanlima.springrestapi.rest.dto.Pedido.InformacaoItemPedidoDTO;
+import com.jeanlima.springrestapi.rest.dto.Pedido.InformacoesPedidoDTO;
+import com.jeanlima.springrestapi.rest.dto.Pedido.PedidoDTO;
 import com.jeanlima.springrestapi.service.PedidoService;
 
 @RestController

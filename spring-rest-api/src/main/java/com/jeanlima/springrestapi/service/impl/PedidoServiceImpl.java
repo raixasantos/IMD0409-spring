@@ -19,8 +19,8 @@ import com.jeanlima.springrestapi.repository.ClienteRepository;
 import com.jeanlima.springrestapi.repository.ItemPedidoRepository;
 import com.jeanlima.springrestapi.repository.PedidoRepository;
 import com.jeanlima.springrestapi.repository.ProdutoRepository;
-import com.jeanlima.springrestapi.rest.dto.ItemPedidoDTO;
-import com.jeanlima.springrestapi.rest.dto.PedidoDTO;
+import com.jeanlima.springrestapi.rest.dto.Pedido.ItemPedidoDTO;
+import com.jeanlima.springrestapi.rest.dto.Pedido.PedidoDTO;
 import com.jeanlima.springrestapi.service.PedidoService;
 
 import lombok.RequiredArgsConstructor;

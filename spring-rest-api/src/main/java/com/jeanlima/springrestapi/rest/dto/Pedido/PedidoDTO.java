@@ -1,4 +1,4 @@
-package com.jeanlima.springrestapi.rest.dto;
+package com.jeanlima.springrestapi.rest.dto.Pedido;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

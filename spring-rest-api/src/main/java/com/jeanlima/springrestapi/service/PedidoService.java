@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import com.jeanlima.springrestapi.enums.StatusPedido;
 import com.jeanlima.springrestapi.model.Pedido;
-import com.jeanlima.springrestapi.rest.dto.PedidoDTO;
+import com.jeanlima.springrestapi.rest.dto.Pedido.PedidoDTO;
 
 public interface PedidoService {
     Pedido salvar( PedidoDTO dto );

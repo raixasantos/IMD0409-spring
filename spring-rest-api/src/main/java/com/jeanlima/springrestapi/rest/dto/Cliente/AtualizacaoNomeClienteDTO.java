@@ -1,4 +1,4 @@
-package com.jeanlima.springrestapi.rest.dto;
+package com.jeanlima.springrestapi.rest.dto.Cliente;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemPedidoDTO {
-    private Integer produto;
-    private Integer quantidade;
+public class AtualizacaoNomeClienteDTO {
+    private String nome;
 }

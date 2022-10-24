@@ -3,15 +3,16 @@ package com.jeanlima.springrestapi.rest.controllers;
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,6 +24,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.jeanlima.springrestapi.model.Produto;
 import com.jeanlima.springrestapi.repository.ProdutoRepository;
+import com.jeanlima.springrestapi.rest.dto.Produto.AtualizacaoDescricaoProdutoDTO;
+import com.jeanlima.springrestapi.rest.dto.Produto.AtualizacaoPrecoProdutoDTO;
+import com.jeanlima.springrestapi.rest.dto.Produto.ProdutoDTO;
+import com.jeanlima.springrestapi.service.ProdutoService;
 
 
 
@@ -33,10 +38,14 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository repository;
 
+    @Autowired
+    private ProdutoService service;
+
     @PostMapping
     @ResponseStatus(CREATED)
-    public Produto save( @RequestBody Produto produto ){
-        return repository.save(produto);
+    public Integer save( @RequestBody ProdutoDTO dto ){
+        Produto produto = service.salvar(dto);
+        return produto.getId();
     }
 
     @PutMapping("{id}")
@@ -85,5 +94,21 @@ public class ProdutoController {
 
         Example example = Example.of(filtro, matcher);
         return repository.findAll(example);
+    }
+
+    @PatchMapping("{id}/descricao")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateDescricao(@PathVariable Integer id ,
+                             @RequestBody AtualizacaoDescricaoProdutoDTO dto){
+        String novaDescricao = dto.getDescricao();
+        service.atualizaDescricao(id, novaDescricao);
+    }
+
+    @PatchMapping("{id}/preco")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updatePreco(@PathVariable Integer id ,
+                             @RequestBody AtualizacaoPrecoProdutoDTO dto){
+        BigDecimal novoPreco = dto.getPreco();
+        service.atualizaPreco(id, novoPreco);
     }
 }
